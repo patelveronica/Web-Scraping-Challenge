@@ -3,18 +3,17 @@ from splinter import Browser
 from bs4 import BeautifulSoup as bs
 from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
+import time
 
 # write a function that will execute all of your scraping code 
 def scrape():
-    # Set up Splinter
+    # browser = init_browser()
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False) 
 
     # Visit the URL https://redplanetscience.com
-    url - "https://redplanetscience.com/"
+    url = "https://redplanetscience.com/"
     browser.visit(url)
-
-    time.sleep(3)
 
     # scrape page into Soup
     html = browser.html
@@ -29,7 +28,7 @@ def scrape():
     
     # JPL Mars Spave Images: visit url: 'https://spaceimages-mars.com'
     url = 'https://spaceimages-mars.com/'
-    broswer.visit(url)
+    browser.visit(url)
 
     # pull html into Beautiful Soup parser  
     html=browser.html
@@ -52,9 +51,10 @@ def scrape():
     # use Panda's 'read_html' to parse the url and convert the html to string
     tables= pd.read_html(url)
     # store data in DataFrame
-    table_df = tables[0]
-    table_df.columns = ['Mars-Earth Comparision', 'Mars', 'Earth']
-    table_df = table_df.iloc[1:]
+    table_df = tables[1]
+    table_df.columns = ['Description', 'Value']
+    # use Pandas to convert the data to a HTML table
+    table_df.to_html('marsfactstable.html', index=False)
 
     # Mars Hemispheres: visit the URL: 'https://marshemispheres.com/'
     # obtain high resolution images for each of Mar's hemispheres
@@ -64,6 +64,9 @@ def scrape():
     # pull html into Beautiful Soup parser
     html=browser.html
     soup=bs(html, 'html.parser')
+
+    # create list for dictionay to hold title and the high resolution urls
+    img_title_list = []
 
     # find the high resolution images url and title of each Hemisphere
     high_reso_image = soup.find_all('div', class_ = 'description')
@@ -82,9 +85,9 @@ def scrape():
         highresol_imgurl = url + img_src
 
         # store data in a dictionary
-        hemisphere_image_urls = {
+        hemisphere_image_url = {
             "title": image_title,
-            "img_url": highresol_imgurl
+            "image_url": highresol_imgurl
         }
 
         # close the browser after scraping
@@ -95,8 +98,8 @@ def scrape():
             "news_title": news_titles.text,
             "news_p": news_p.text,
             "featured_imge_url": featured_imge_url,
-            "facts_table": table_df,
-            "hemispheres": hemisphere_image_urls
+            # "facts_table": table_df.to_html(),
+            "hemispheres": img_title_list
         }
         # return results
         return mars_information

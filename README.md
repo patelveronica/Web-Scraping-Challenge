@@ -6,24 +6,22 @@ Mission_to_Mars
 
 
 
+Technology stack - HTML, CSS, BootStrap, Jupyter, Python
+Python Libraries - Pandas, Beautiful Soup, Splinter, PyMongo
+Database - Mongo DB
+App server - Flask
 
-Step 1 - Scraping
+Steps:
 
-Web Scraping using Jupyter notebook, BeautifulSoup, Pandas, and Requests/Splinter.
+1. Web Scraping using Jupyter notebook, BeautifulSoup, Pandas, and Splinter and display on Jupyter Notebook.[Mission_toMars.ipynb]
 
-NASA Mars News: 
-	Scrape the Mars News Dite and collect the latest News Title and Paragraph Text..
+2. Create a Python Script to scrape and excecute all scraping code and return Python disctionary containing all the scraped data.[scrape_mars.py]
 
-JPL Mars Space Images - Futured Image:
-	Visit the url for the Featured Space Image site here.
+3. Create a Flask App to create route. The root route will query Mongo DB and pass the mars data into an HTML template to display the data. [app.py]
 
-	Use splinter to navigate the site and find the image url for the current Featured Mars Image.
-Mars Fact:
-	Visit the Mars Facts webpage here and use Pandas to scrape the table containing facts about the planet including Diameter, Mass, etc.
+4. Create HTML page that will take the Mars data dictionary and display all of the data in the HTML elements.
 
-Mars Hemispheres:
+5. Create Mondo DB in Python to store the scraped data. PyMongo is used to set up mongo connection and to define DB.
+	
 
-	Visit the astrogeology site here to obtain high resolution images for each of Mar's hemispheres.
-
-Step 2 - MongoDB and Flask Application
 
