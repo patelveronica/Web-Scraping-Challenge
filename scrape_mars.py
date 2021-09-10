@@ -54,7 +54,8 @@ def scrape():
     table_df = tables[1]
     table_df.columns = ['Description', 'Value']
     # use Pandas to convert the data to a HTML table
-    table_df.to_html('marsfactstable.html', index=False)
+    table_df.to_html()
+    # ('marsfactstable.html', index=False)
 
     # Mars Hemispheres: visit the URL: 'https://marshemispheres.com/'
     # obtain high resolution images for each of Mar's hemispheres
@@ -85,24 +86,26 @@ def scrape():
         highresol_imgurl = url + img_src
 
         # store data in a dictionary
-        hemisphere_image_url = {
+        hemisphere_image_url = [{
             "title": image_title,
             "image_url": highresol_imgurl
-        }
+        }]
+        #      append titles and images to the list
+        img_title_list += hemisphere_image_url
 
-        # close the browser after scraping
-        browser.quit()
+    # close the browser after scraping
+    browser.quit()
 
         # create disctionary for all the data from above
-        mars_information = {
-            "news_title": news_titles.text,
-            "news_p": news_p.text,
-            "featured_imge_url": featured_imge_url,
-            # "facts_table": table_df.to_html(),
-            "hemispheres": img_title_list
+    mars_information = {
+        "news_title": news_titles.text,
+        "news_p": news_p.text,
+        "featured_imge_url": featured_imge_url,
+        "facts_table": table_df.to_html(),
+        "hemispheres": img_title_list
         }
         # return results
-        return mars_information
+    return mars_information
 
 
 

@@ -31,17 +31,26 @@
       </div>
       <div class = "col-md-4">
         <h2>Mars Facts</h2>
+        <p>{{marsfacts|safe}}</p>
       </div>
     </div>    
     <hr>
       <div class = "row">
         <div class = "col-md-4">
-          <h2>Mars Hemispheres</h2>
-          <img src="{{mars_information.hemispheres}}" atl=hemispheres>         
+          <h2>{{mars_information['hemispheres'][0]['title']}}</h2>
+          <img src="{{ mars_information['hemispheres'][0]['image_url']}}" atl="hemispheres">         
         </div>
         <div class = "col-md-4">
-          <h2>Mars Hemispheres</h2>
-          <img src="{{mars_information.hemispheres}}" atl=hemispheres>        
+          <h2>{{mars_information['hemispheres'][1]['title']}}</h2>     
+          <img src="{{ mars_information['hemispheres'][1]['image_url']}}" atl="hemispheres">        
+        </div>
+        <div class = "col-md-4">
+          <h2>{{mars_information['hemispheres'][2]['title']}}</h2>     
+          <img src="{{ mars_information['hemispheres'][2]['image_url']}}" atl="hemispheres">        
+        </div>
+        <div class = "col-md-4">
+          <h2>{{mars_information['hemispheres'][3]['title']}}</h2>    
+          <img src="{{ mars_information['hemispheres'][3]['image_url']}}" atl="hemispheres">        
         </div>
       </div>  
   </div>
