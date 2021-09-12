@@ -7,53 +7,65 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">  
 </head>
 
 <body>
-  <div class="container-fluid">
-    <div class="jumbotron text-center">
+  <div class="container-fluid" style="background-color:rgb(153, 194, 196)">
+    <div class="jumbotron text-center" style="background-color: rgb(197, 195, 195)">
       <h1>Mission to Mars</h1>
       <!-- <p>Mars News. Mars Images. Mars Facts. Mars Hemispheres</p> -->
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a></p>
     </div>
     <!-- latest news -->
     <div class = "row">
-      <div class = "col-md-12">
-        <h2>Latest Mars News</h2>
-        <h3>{{mars_information.news_title}}</h3>
-        <p>{{mars_information.news_p}}</p>
+      <div class = "col-md-12; container-fluid">
+        <h2 style="color: rgb(15, 48, 15)"><strong>Mars Latest News</strong></h2>
+        <hr>
+        <h3 style="font-size: 25px; font: bold" class='box'>{{mars_information.news_title}}</h3>
+        <p style="font-size:15px">{{mars_information.news_p}}</p>
       </div>
+      <hr>
     </div> 
     <div class = "row">
-      <div class = "col-md-8">
-        <h2>Featured Mars Image</h2>
+      <div class = "col-md-6">
+        <h2 style="color: rgb(15, 48, 15)"><strong>Featured Mars Image</strong></h2>
+        <hr>
         <img src="{{ mars_information.featured_imge_url }}" alt="Featured Image">
       </div>
-      <div class = "col-md-4">
-        <h2>Mars Facts</h2>
-        <p>{{marsfacts|safe}}</p>
+      <div class = "col-md-6">
+        <h2 style="color: rgb(15, 48, 15)"><strong>Mars Facts</strong></h2>
+        <hr>
+        <p style="border-radius: 100%; font: large;">{{marsfacts|safe}}</p>
       </div>
     </div>    
     <hr>
       <div class = "row">
-        <div class = "col-md-4">
-          <h2>{{mars_information['hemispheres'][0]['title']}}</h2>
-          <img src="{{ mars_information['hemispheres'][0]['image_url']}}" atl="hemispheres">         
+        <div class = 'col-md-6 col-3'>
+          <h2 style="color: rgb(15, 48, 15)">{{mars_information['hemispheres'][0]['title']}}</h2>
+          <img src="{{ mars_information['hemispheres'][0]['image_url']}}" atl="hemispheres" width='400' height='400'>         
         </div>
-        <div class = "col-md-4">
-          <h2>{{mars_information['hemispheres'][1]['title']}}</h2>     
-          <img src="{{ mars_information['hemispheres'][1]['image_url']}}" atl="hemispheres">        
+        <div class = 'col-md-6 col-3'>
+          <h2 style="color: rgb(15, 48, 15)">{{mars_information['hemispheres'][1]['title']}}</h2>     
+          <img src="{{ mars_information['hemispheres'][1]['image_url']}}" atl="hemispheres" width='400' height='400'>        
         </div>
-        <div class = "col-md-4">
-          <h2>{{mars_information['hemispheres'][2]['title']}}</h2>     
-          <img src="{{ mars_information['hemispheres'][2]['image_url']}}" atl="hemispheres">        
+        <div class = 'col-md-6 col-3'>
+          <h2 style="color: rgb(15, 48, 15)">{{mars_information['hemispheres'][2]['title']}}</h2>     
+          <img src="{{ mars_information['hemispheres'][2]['image_url']}}" atl="hemispheres" width='400' height='400'>        
         </div>
-        <div class = "col-md-4">
-          <h2>{{mars_information['hemispheres'][3]['title']}}</h2>    
-          <img src="{{ mars_information['hemispheres'][3]['image_url']}}" atl="hemispheres">        
+        <div class ='col-md-6 col-3'>
+          <h2 style="color: rgb(15, 48, 15)">{{mars_information['hemispheres'][3]['title']}}</h2>    
+          <img src="{{ mars_information['hemispheres'][3]['image_url']}}" atl="hemispheres" width='400' height='400'>        
         </div>
       </div>  
   </div>
+  <!-- Footer -->
+    <hr>
+    <h4><div style="text-align: center; color:rgb(197, 195, 195); font: bold;"><span> Veronika Patel © 2021</span>&nbsp; &nbsp;
+     
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>
